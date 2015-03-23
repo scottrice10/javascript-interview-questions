@@ -1,2 +1,2 @@
-# javascript-interview-questions
+# JavaScript Interview Questions
 Interview questions solved using JavaScript
