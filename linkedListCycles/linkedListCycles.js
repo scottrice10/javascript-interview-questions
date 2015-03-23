@@ -33,7 +33,7 @@
 
 var Node = function(value){
   return { value: value, next: null };
-}
+};
 
 var hasCycle = function(linkedList){
   // TODO: implement me!
