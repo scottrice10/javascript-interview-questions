@@ -21,6 +21,16 @@
  */
 
 var mixEvents = function(obj) {
-  // TODO: Your code here
+  var events = [];
+  obj.trigger = function(eventName){
+    if(events[eventName]){
+      return events[eventName]();
+    }
+  };
+
+  obj.on = function(eventName, func){
+    events[eventName] = func;
+  };
+
   return obj;
 };
