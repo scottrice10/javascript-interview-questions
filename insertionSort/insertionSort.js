@@ -40,11 +40,35 @@
 var testingTransform = function(array) {
   var transform = [];
 
-  for(var i = 0; i < array.length; i++)
-    transform.push({value: array[i], i: i});
+  for(var i = 0; i < array.length; i++) {
+    transform.push({
+      value: array[i],
+      i: i
+    });
+  }
 
   return transform;
 };
 
-var insertionSort = function(array) {
+var insertionSort = function(array, index, tempPointer) {
+  index = index || 1;
+  tempPointer = tempPointer || 1;
+
+  if(index === array.length) {
+    return array;
+  }
+
+  if(array[index - 1] < array[index]) {
+    return insertionSort(array, index + 1, index + 1);
+  }
+
+  if(tempPointer > 1) {
+    tempPointer -= 1
+  }
+
+  var temp = array[index];
+  array[index] = array[index - 1];
+  array[index - 1] = temp;
+
+  return insertionSort(array, tempPointer, index);
 };
