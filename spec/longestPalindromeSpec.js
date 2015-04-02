@@ -1,5 +1,5 @@
 describe("longestPalindrome", function() {
-  it("should be implemented", function() {
-    expect(false).to.be.equal(true);
+  it("should return longest palindrome", function() {
+    expect(longestPalindrome("My dad is a racecar athlete")).to.be.equal("a racecar a");
   });
 });
