@@ -1,5 +1,9 @@
 describe("romanNumeralTranslator", function() {
-  it("should be implemented", function() {
-    expect(false).to.be.equal(true);
+  it("should return correct value for 'LX'", function() {
+    expect(translateRomanNumeral("LX")).to.be.equal(60);
+  });
+
+  it("should return correct value for 'IV'", function() {
+    expect(translateRomanNumeral("IV")).to.be.equal(4);
   });
 });
