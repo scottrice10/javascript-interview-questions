@@ -38,20 +38,5 @@
 
 
 var asyncMap = function(tasks, callback) {
-  /* START SOLUTION */
-  var results = [];
-  for(var i = 0; i < tasks.length; i++) {
-    (function(i) {
-      var task = tasks[i];
 
-      task(function(value) {
-        results[i] = value;
-      });
-    })(i);
-  }
-
-  if(results.length === tasks.length){
-    callback(results);
-  }
-  /* END SOLUTION */
 };

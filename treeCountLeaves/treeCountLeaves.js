@@ -33,26 +33,6 @@
  */
 
 var Tree = CountLeaves = function(value){
-  this.value = value;
-  this.children = [];
-};
-
-Tree.prototype.countLeaves = function () {
-  var noOfLeaves = 0;
-
-  var recurse = function(node){
-    if(node.children.length === 0){
-      return noOfLeaves += 1;
-    }
-
-    for(var i=0;i<node.children.length;i++){
-      recurse(node.children[i]);
-    }
-  };
-
-  recurse(this);
-
-  return noOfLeaves;
 };
 
 /**

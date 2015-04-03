@@ -13,34 +13,5 @@
  */
 
 var toFraction = function(number) {
-  var isNegative = false;
-  var numerator = 0;
-  var denominator = 1;
 
-  if(number < 0) {
-    isNegative = true;
-    number = Math.abs(number);
-  }
-
-  var fraction = function(){
-    for(var i=0;i<=10;i++){
-      for(var j=1;j<=10;j++){
-        if(i/j === number){
-          numerator = i;
-          denominator = j;
-          return;
-        }
-      }
-    }
-  };
-
-  fraction();
-
-  var result = numerator + "/" + denominator;
-
-  if(isNegative) {
-    result = "-" + result;
-  }
-
-  return result;
 };

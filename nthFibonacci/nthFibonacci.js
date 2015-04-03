@@ -21,28 +21,7 @@
  */
 
 var nthFibonacci = function(n) {
-  var result = 0;
-  var resultMap = {};
-  resultMap[0] = 0;
-  resultMap[1] = 1;
 
-  var recurse = function(index){
-    if(resultMap[n]){
-      result = resultMap[n];
-      return;
-    }
-
-    index += 1;
-    if(index > 1){
-      resultMap[index] = resultMap[index - 2] + resultMap[index - 1];
-    }
-
-    recurse(index);
-  };
-
-  recurse(0);
-
-  return result;
 };
 
 

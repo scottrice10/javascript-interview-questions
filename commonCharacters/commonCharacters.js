@@ -12,21 +12,5 @@
 
 
 var commonCharacters = function(string1, string2) {
-  var charHashTable = {};
-  var result = "";
 
-  for(var i=0;i<string2.length;i++){
-    if(string2[i] !== " "){
-      charHashTable[string2[i]] = true;
-    }
-  }
-
-  for(var j=0;j<string1.length;j++){
-    if(charHashTable[string1[j]]){
-      charHashTable[string1[j]] = false;
-      result += string1[j];
-    }
-  }
-
-  return result;
 };

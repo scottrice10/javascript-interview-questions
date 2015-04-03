@@ -26,26 +26,5 @@ var DIGIT_VALUES = {
 };
 
 var translateRomanNumeral = function(romanNumeral) {
-  var result = null;
-  var skip = false;
 
-  if(romanNumeral.length === 1 && DIGIT_VALUES[romanNumeral]) {
-    return DIGIT_VALUES[romanNumeral];
-  }
-
-  for(var i = 0; i < romanNumeral.length; i++) {
-    if(skip){
-      skip = false;
-      continue;
-    }
-
-    if(DIGIT_VALUES[romanNumeral[i + 1]] && DIGIT_VALUES[romanNumeral[i]] < DIGIT_VALUES[romanNumeral[i + 1]]) {
-      result += DIGIT_VALUES[romanNumeral[i + 1]] - DIGIT_VALUES[romanNumeral[i]];
-      skip = true;
-    } else {
-      result += DIGIT_VALUES[romanNumeral[i]]
-    }
-  }
-
-  return result;
 };

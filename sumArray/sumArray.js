@@ -11,21 +11,5 @@
 
 // Solved in O(n) time and O(1) space
 var sumArray = function(array) {
-  var sum = 0;
 
-  var recurse = function(index, currSum) {
-    if(currSum > sum) {
-      sum = currSum;
-    }
-
-    if(index < array.length) {
-      recurse(index + 1, currSum + array[index]);
-    }
-  };
-
-  for(var i = 0; i < array.length; i++) {
-    recurse(i + 1, array[i]);
-  }
-
-  return sum;
 };

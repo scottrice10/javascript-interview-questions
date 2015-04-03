@@ -12,31 +12,5 @@
  *
  */
 var deepEquals = function(apple, orange) {
-  var isEqual = true;
 
-  var recurse = function(appleElem, orangeElem) {
-    if((typeof appleElem === "string" || typeof appleElem === "number") &&
-    (typeof orangeElem === "string" || typeof orangeElem === "number") &&
-    appleElem !== orangeElem) {
-      return isEqual = false;
-    }
-
-    if(Array.isArray(appleElem)) {
-      for(var i = 0; i < appleElem.length; i++) {
-        recurse(appleElem[i], orangeElem[i]);
-      }
-    }
-
-    if(typeof appleElem === "object") {
-      for(var key in appleElem) {
-        if(appleElem.hasOwnProperty(key)) {
-          recurse(appleElem[key], orangeElem[key]);
-        }
-      }
-    }
-  };
-
-  recurse(apple, orange);
-
-  return isEqual;
 };

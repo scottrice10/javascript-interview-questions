@@ -11,25 +11,5 @@
 */
 
 var evenOccurrence = function(arr) {
-  var countMap = {};
 
-  for(var i=0;i<arr.length;i++){
-    if(!countMap[arr[i]]){
-      countMap[arr[i]] = {index: i, count: 1, even: false};
-    } else {
-      countMap[arr[i]].count += 1;
-      countMap[arr[i]].even = (countMap[arr[i]].count % 2 === 0);
-    }
-  }
-
-  var currLow = arr.length;
-  var result = null;
-  for(var key in countMap){
-    if(countMap[key].even && countMap[key].index < currLow){
-      currLow = countMap[key].index;
-      result = parseInt(key);
-    }
-  }
-
-  return result;
 };

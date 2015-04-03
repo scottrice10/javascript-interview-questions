@@ -24,25 +24,5 @@
  *
  */
 var balancedParens = function(input) {
-  /* START SOLUTION */
-  var balancingStack = [];
-  var parensMap = {
-    "[": "]",
-    "{": "}",
-    "(": ")"
-  };
 
-  for(var i=0; i<input.length; i++){
-    var char = input[i];
-    if(balancingStack[balancingStack.length - 1] === char){
-      balancingStack.pop();
-    }
-
-    if(parensMap[char]){
-      balancingStack.push(parensMap[char]);
-    }
-  }
-
-  return balancingStack.length === 0;
-  /* END SOLUTION */
 };

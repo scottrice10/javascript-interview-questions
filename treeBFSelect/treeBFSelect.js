@@ -31,27 +31,7 @@
  */
 
 var Tree = BFTree = function(value) {
-  this.value = value;
-  this.children = [];
-};
 
-Tree.prototype.BFSelect = function(filter) {
-  var result = [];
-  var queue = [{node: this, depth: 0}];
-
-  while(queue.length > 0){
-    var item = queue.shift();
-
-    if(filter(item.node.value, item.depth)){
-      result.push(item.node.value);
-    }
-
-    for(var i=0;i<item.node.children.length;i++){
-      queue.push({node: item.node.children[i], depth: item.depth + 1});
-    }
-  }
-
-  return result;
 };
 
 /**

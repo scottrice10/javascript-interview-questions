@@ -192,31 +192,4 @@
  *
  */
 var merge = function(left, right) {
-  var leftIndex = 0;
-  var rightIndex = 0;
-  var result = [];
-
-  while(leftIndex < left.length && rightIndex < right.length){
-    if(left[leftIndex] > right[rightIndex]){
-      result.push(right[rightIndex]);
-      rightIndex += 1;
-    } else {
-      result.push(left[leftIndex]);
-      leftIndex += 1;
-    }
-  }
-
-  return result.concat(left.slice(leftIndex).concat(right.slice(rightIndex)));
-};
-
-var mergeSort = function(items) {
-  if(items.length < 2){
-    return items;
-  }
-
-  var mid = Math.floor(items.length / 2);
-  var left = items.slice(0,mid);
-  var right = items.slice(mid);
-
-  return merge(mergeSort(left), mergeSort(right));
 };

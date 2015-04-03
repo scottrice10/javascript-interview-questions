@@ -37,42 +37,5 @@
 
 // naive solution - 2n time complexity
 var characterFrequency = function(string) {
-  var charMap = {};
 
-  for(var i=0;i<string.length;i++){
-    var char = string[i];
-
-    if(!charMap[char]){
-      charMap[char] = 0;
-    }
-
-    charMap[char]++;
-  }
-
-  var charArray = [];
-  for(var key in charMap){
-    charArray.push([key, charMap[key]]);
-  }
-
-  charArray.sort(function(a,b){
-    if(a[1] < b[1]){
-      return 1;
-    }
-
-    if(a[1] > b[1]){
-      return -1;
-    }
-
-    if(a[0] < b[0]){
-      return -1;
-    }
-
-    if(a[0] > b[0]){
-      return 1;
-    }
-
-    return 0;
-  });
-
-  return charArray;
 };

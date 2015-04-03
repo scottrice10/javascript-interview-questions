@@ -30,82 +30,35 @@
  * You will need a doubly-linked list (provided).
  */
 
-var LRUCache = function (limit) {
-  this._items = {};
-  this._ordering = new List();
-  this._limit = limit || 10000;
-  this._size = 0;
-};
+var LRUCache = function(limit) {};
 
-var LRUCacheItem = function (key, val) {
-  this.val = val === undefined ? null : val;
-  this.key = key === undefined ? null : key;
-  this.node = null;
-};
+var LRUCacheItem = function(val, key) {};
 
-LRUCache.prototype.size = function () {
-  return this._size;
-};
+LRUCache.prototype.size = function() {};
 
-LRUCache.prototype.get = function (key) {
-  if(!this._items[key]){
-    return null;
-  }
+LRUCache.prototype.get = function(key) {};
 
-  var item = this._items[key];
-  this.promote(item);
-  return item.val;
-};
+LRUCache.prototype.set = function(key, val) {};
 
-LRUCache.prototype.set = function (key, val) {
-  var item;
-  if(this._items[key]){
-    item = this._items[key];
-    item.val = val;
-    this.promote(item);
-  } else {
-    if(this.full()){
-      this.prune();
-    }
 
-    this._size += 1;
-    item = new LRUCacheItem(key, val);
-    item.node = this._ordering.unshift(item);
-    this._items[key] = item;
-  }
-};
 
-LRUCache.prototype.full = function () {
-  return this._size >= this._limit;
-};
-
-LRUCache.prototype.promote = function (item) {
-  this._ordering.moveToFront(item.node);
-};
-
-LRUCache.prototype.prune = function () {
-  var oldest = this._ordering.pop();
-  delete this._items[oldest.key];
-  this._size = Math.max(0,this._size - 1);
-};
-
-var List = function () {
+var List = function() {
   this.head = null;
   this.tail = null;
 };
 
-var ListNode = function (prev, val, next) {
+var ListNode = function(prev, val, next) {
   this.prev = prev || null;
   this.val = val;
   this.next = next || null;
 };
 
 // Insert at the head of the list.
-List.prototype.unshift = function (val) {
+List.prototype.unshift = function(val) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = new ListNode(null, val, null);
-  // Not empty list.
+    // Not empty list.
   } else {
     this.head = new ListNode(null, val, this.head);
     this.head.next.prev = this.head;
@@ -115,11 +68,11 @@ List.prototype.unshift = function (val) {
 };
 
 // Delete at the head of the list.
-List.prototype.shift = function () {
+List.prototype.shift = function() {
   // Empty list
   if (this.head === null && this.tail === null) {
     return null;
-  // Not empty list.
+    // Not empty list.
   } else {
     var head = this.head;
     this.head = this.head.next;
@@ -129,11 +82,11 @@ List.prototype.shift = function () {
 };
 
 // Insert at the end of the list.
-List.prototype.push = function (val) {
+List.prototype.push = function(val) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = new ListNode(null, val, null);
-  // Not empty list.
+    // Not empty list.
   } else {
     this.tail = new ListNode(this.tail, val, null);
     this.tail.prev.next = this.tail;
@@ -143,11 +96,11 @@ List.prototype.push = function (val) {
 };
 
 // Delete at the end of the list.
-List.prototype.pop = function () {
+List.prototype.pop = function() {
   // Empty list
   if (this.head === null && this.tail === null) {
     return null;
-  // Not empty list.
+    // Not empty list.
   } else {
     var tail = this.tail;
     this.tail = this.tail.prev;
@@ -157,7 +110,7 @@ List.prototype.pop = function () {
 };
 
 // Move a node to the front of the List
-List.prototype.moveToFront = function (node) {
+List.prototype.moveToFront = function(node) {
   if (node === this.tail) {
     this.pop();
   } else if (node === this.head) {
@@ -174,7 +127,7 @@ List.prototype.moveToFront = function (node) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = node;
-  // At least one node.
+    // At least one node.
   } else {
     this.head.prev = node;
     node.next = this.head;
@@ -183,7 +136,7 @@ List.prototype.moveToFront = function (node) {
 };
 
 // Move a node to the end of the List
-List.prototype.moveToEnd = function (node) {
+List.prototype.moveToEnd = function(node) {
   if (node === this.head) {
     this.shift();
   } else if (node === this.tail) {
@@ -200,7 +153,7 @@ List.prototype.moveToEnd = function (node) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = node;
-  // At least one node.
+    // At least one node.
   } else {
     this.tail.next = node;
     node.prev = this.tail;
@@ -208,8 +161,11 @@ List.prototype.moveToEnd = function (node) {
   }
 };
 
-ListNode.prototype.delete = function () {
-  if (this.prev) { this.prev.next = this.next; }
-  if (this.next) { this.next.prev = this.prev; }
+ListNode.prototype.delete = function() {
+  if (this.prev) {
+    this.prev.next = this.next;
+  }
+  if (this.next) {
+    this.next.prev = this.prev;
+  }
 };
-

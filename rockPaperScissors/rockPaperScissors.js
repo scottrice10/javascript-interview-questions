@@ -18,24 +18,5 @@
  */
 
 var rockPaperScissors = function (rounds) {
-  rounds = rounds || 5;
-  var result = [];
-  var throws = ["rock", "paper", "scissors"];
 
-  var recurse = function(index, turn){
-    turn = turn || [];
-    if(index === rounds){
-      result.push(turn);
-      return;
-    }
-
-    for(var i=0;i<throws.length;i++){
-      turn.push(throws[i]);
-      recurse(index + 1, turn);
-    }
-  };
-
-  recurse(0);
-
-  return result;
 };

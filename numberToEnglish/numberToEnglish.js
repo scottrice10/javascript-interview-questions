@@ -52,47 +52,5 @@ var numbersToPlace = {
 };
 
 Number.prototype.toEnglish = function() {
-  var num = this;
-  var numArr = num.toString().split("").reverse().map(Number);
-  var numMap = [];
 
-  var numberToString = function(val) {
-    if(val) {
-      numMap.unshift(val);
-    }
-  };
-
-  for(var i = 0; i < numArr.length; i++) {
-    if(i % 3 === 0 && !numArr[i + 1]) {
-      var number = numbersToWords[numArr[i]];
-      if(numbersToPlace[10 * i]){
-        number += " " + numbersToPlace[10 * i];
-      }
-
-      numberToString(number);
-    }
-
-    if(i % 3 === 1) {
-      var englishValue;
-      var val = parseInt(numArr.slice(i-1, i+1).reverse().join(''));
-
-      if(numbersToWords[val]){
-        englishValue = numbersToWords[val];
-      } else if(numbersToWords[parseInt(numArr[i] + "0")]) {
-        englishValue = numbersToWords[parseInt(numArr[i] + "0")] + "-" + numbersToWords[numArr[i-1]];
-      }
-
-      if(numbersToPlace[Math.pow(10,i-1)]){
-        englishValue += " " + numbersToPlace[Math.pow(10,i-1)];
-      }
-
-      numberToString(englishValue);
-    }
-
-    if(i % 3 === 2) {
-      numberToString(numbersToWords[numArr[i]] + ' hundred');
-    }
-  }
-
-  return numMap.join(" ");
 };

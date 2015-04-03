@@ -37,25 +37,5 @@ var i;
 
 
 var bubbleSort = function(array) {
-  var atLeastOneSwap = false;
 
-  for(i = 0; i < array.length - 1; i++) {
-    if(array[i] > array[i + 1]) {
-      var temp = array[i + 1];
-      array[i + 1] = array[i];
-      array[i] = temp;
-
-      atLeastOneSwap = true;
-    }
-
-    if(i === array.length - 2) {
-      if(atLeastOneSwap) {
-        return bubbleSort(array);
-      } else {
-        return array;
-      }
-    }
-  }
-
-  return array;
 };

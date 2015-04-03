@@ -2,7 +2,7 @@
  * Assignment: Write a function that returns true if a linked list contains a cycle, or false if it terminates somewhere
  *
  * Explanation:
- * 
+ *
  * Generally, we assume that a linked list will terminate in a null next pointer, as follows:
  *
  * A -> B -> C -> D -> E -> null
@@ -32,28 +32,9 @@
  */
 
 var Node = function(value) {
-  return {
-    value: value,
-    next: null
-  };
 };
 
 var hasCycle = function(linkedList) {
   var slow = linkedList;
-  var fast = linkedList;
-  var pause = true;
 
-  while(fast = fast.next){
-    if(slow.value === fast.value){
-      return true;
-    }
-
-    if(!pause){
-      slow = slow.next;
-    }
-
-    pause = !pause;
-  }
-
-  return false;
 };

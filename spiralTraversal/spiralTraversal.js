@@ -15,29 +15,5 @@
  */
 
 var spiralTraversal = function(matrix, result){
-  result = result || [];
 
-  if(matrix.length === 0){
-    return result;
-  }
-
-  // top, move left to right
-  result = result.concat(matrix.shift());
-
-  //right, move top to bottom
-  for(var i=0;i<matrix.length;i++){
-    result = result.concat(matrix[i].splice(matrix[i].length - 1, 1));
-  }
-
-  //bottom, move right to left
-  if(matrix.length > 0){
-    result = result.concat(matrix.pop().reverse());
-  }
-
-  //left, move bottom to top
-  for(var j=matrix.length - 1;j>=0;j--){
-    result = result.concat(matrix[j].splice(0, 1));
-  }
-
-  return spiralTraversal(matrix, result)
 };

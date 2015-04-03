@@ -23,19 +23,5 @@
  */
 
 Array.prototype.isSubsetOf = function(array) {
-  var subArray = this;
-  var map = {};
 
-  for(var i=0;i<subArray.length;i++){
-    if(!map[subArray[i]]){
-      if(array.indexOf(subArray[i]) === -1){
-        return false;
-      }
-    }
-
-    // store in hashmap to skip over duplicates
-    map[subArray[i]] = true;
-  }
-
-  return true;
 };

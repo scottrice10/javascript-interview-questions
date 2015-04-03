@@ -14,19 +14,4 @@
 
 // O(n^3) time complexity
 var allAnagrams = function(string) {
-  var result = [];
-
-  var recurse = function(currStrArr, currStr) {
-    if(currStr.length === string.length) {
-      return result.push(currStr);
-    }
-
-    for(var i = 0; i < currStrArr.length; i++) {
-      recurse(currStrArr.slice(0,i) + currStrArr.slice(i + 1), currStr + string[i]);
-    }
-  };
-
-  recurse(string, "");
-
-  return result;
 };

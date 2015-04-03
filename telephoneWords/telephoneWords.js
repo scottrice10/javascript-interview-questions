@@ -42,23 +42,5 @@ var phoneDigitsToLetters = {
 
 
 var telephoneWords = function(digitString) {
-  var result = [];
-  var digitArray = digitString.split("");
 
-  var recurse = function(index, word) {
-    if(word.length === digitString.length) {
-      result.push(word);
-      return;
-    }
-
-    var char = digitArray[index];
-    var charArr = phoneDigitsToLetters[char].split("");
-    for(var i = 0; i < charArr.length; i++) {
-      recurse(index + 1, word + charArr[i])
-    }
-  };
-
-  recurse(0, "");
-
-  return result;
 };

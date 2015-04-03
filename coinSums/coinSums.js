@@ -25,25 +25,6 @@
  */
 
 var makeChange = function(total) {
-  var result = 0;
-  var coins = [1,2,5,10,20,50,100,200];
 
-  var recurse = function(sum, index){
-    if(sum === total){
-      return result += 1;
-    }
-
-    if(sum > total){
-      return;
-    }
-
-    for(var i=index;i<coins.length;i++){
-      recurse(sum + coins[i], i)
-    }
-  };
-
-  recurse(0, 0);
-
-  return result;
 };
 

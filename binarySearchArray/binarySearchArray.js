@@ -13,24 +13,5 @@ exhibits the desired characteristics.
 **/
 
 var binarySearch = function(array, element, midPoint) {
-  var lastIndex = array.length - 1;
-  if(typeof midPoint === 'undefined'){
-    midPoint = Math.floor(lastIndex / 2);
-  }
 
-  if(element < array[0] || element > array[lastIndex]){
-    return null;
-  }
-
-  if(array[midPoint] === element){
-    return midPoint;
-  }
-
-  if(array[midPoint] > element){
-    return binarySearch(array, element, Math.floor(midPoint / 2));
-  }
-
-  if(array[midPoint] < element){
-    return binarySearch(array, element, Math.ceil(midPoint + ((lastIndex - midPoint) / 2)))
-  }
 };

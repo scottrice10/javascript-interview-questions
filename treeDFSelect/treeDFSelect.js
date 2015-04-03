@@ -31,31 +31,10 @@
  */
 
 var Tree = DFSelect = function(value){
-  this.value = value;
-  this.children = [];
 };
 
 Tree.prototype.DFSelect = function(filter) {
-  var result = [];
-  var firstItem = {node: this, depth: 0};
 
-  var recurse = function(item){
-    if(filter(item.node.value, item.depth)){
-      result.push(item.node.value);
-    }
-
-    if(item.node.children.length === 0){
-      return;
-    }
-
-    for(var i=0;i<item.node.children.length;i++){
-      recurse({node: item.node.children[i], depth: item.depth + 1});
-    }
-  };
-
-  recurse(firstItem);
-
-  return result;
 };
 
 /**

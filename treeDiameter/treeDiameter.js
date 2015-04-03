@@ -1,22 +1,15 @@
+/**
+ * The diameter (or width) of binary tree is the number of tree edges on the longest path between two leaves in the tree.
+ * The task is to write function that returns the width for any given binary tree.
+ * Nodes in a tree are defined as {left:nodeOrNull,right:nodeOrNull}.
+ */
+
 var treeDiameter = function(value, left, right) {
   this.value = value || null;
   this.left = left || null;
   this.right = right || null;
 };
 
-function findDiameter(root) { // returns max distance found in the tree.
-  var diameter = 0;
+function findDiameter(root) {
 
-  function recurse(node, nodeDepth) {
-    var leftDepth = node.left ? recurse(node.left, 1) : 0;
-    var rightDepth = node.right ? recurse(node.right, 1) : 0;
-    var width = leftDepth + rightDepth;
-    diameter = Math.max(width, diameter);
-    return nodeDepth + Math.max(leftDepth, rightDepth);
-  }
-
-  // add together the left max depth and right max depth
-  recurse(root, 0);
-
-  return diameter;
 }
