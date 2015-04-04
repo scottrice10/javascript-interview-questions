@@ -38,5 +38,15 @@
 
 
 var asyncMap = function(tasks, callback) {
+  var results = {};
 
+  tasks.forEach(function(task, i){
+    task(function(val){
+      results[i] = val;
+
+      if(tasks.length === Object.keys(results).length){
+        callback(results);
+      }
+    });
+  });
 };

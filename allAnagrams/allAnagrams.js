@@ -12,6 +12,21 @@
  * console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
  */
 
-// O(n^3) time complexity
+// O(n^2) time complexity
 var allAnagrams = function(string) {
+  var result = [];
+
+  var recurse = function(currStr, remainingChars){
+    if(remainingChars.length === 0){
+      return result.push(currStr);
+    }
+
+    for(var i=0;i<remainingChars.length;i++){
+      recurse(currStr + remainingChars[i], remainingChars.slice(0,i) + remainingChars.slice(i + 1))
+    }
+  };
+
+  recurse("", string);
+
+  return result;
 };

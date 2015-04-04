@@ -37,5 +37,30 @@ var i;
 
 
 var bubbleSort = function(array) {
+  var recurse = function(currIndex, array){
+    if(currIndex === array.length - 1){
+      return;
+    }
 
+    var atLeastOneSwap = false;
+    for(var i=currIndex;i<array.length - 1;i++){
+      if(array[i] > array[i + 1]){
+        var temp = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = temp;
+
+        atLeastOneSwap = true;
+      }
+    }
+
+    if(atLeastOneSwap){
+      recurse(currIndex, array);
+    } else {
+      recurse(currIndex + 1, array);
+    }
+  };
+
+  recurse(0, array);
+
+  return array;
 };
