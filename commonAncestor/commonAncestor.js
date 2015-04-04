@@ -40,7 +40,7 @@ Tree.prototype.addChild = function(child){
 Tree.prototype.getClosestCommonAncestor = function(/*...*/
 ){
   // TODO: implement me!
-}
+};
 
 /**
  * should return the ancestral path of a child to this node.

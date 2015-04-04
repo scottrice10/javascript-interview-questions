@@ -25,6 +25,25 @@
  */
 
 var makeChange = function(total) {
+  var coinMap = [1,2,5,10,20,50,100,200];
+  var possibleCombos = 0;
 
+  var recurse = function(currTotal, currIndex){
+    if(total === currTotal){
+      return possibleCombos++;
+    }
+
+    if(currTotal > total){
+      return;
+    }
+
+    for(var i=currIndex;i<coinMap.length;i++){
+      recurse(currTotal + coinMap[i], i);
+    }
+  };
+
+  recurse(0, 0);
+
+  return possibleCombos;
 };
 
