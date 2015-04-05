@@ -11,5 +11,23 @@
 */
 
 var evenOccurrence = function(arr) {
+  var result = null;
+  var charMap = {};
 
+  for(var i=0;i<arr.length;i++){
+    if(!charMap[arr[i]]){
+      charMap[arr[i]] = 0;
+    }
+
+    charMap[arr[i]]++;
+  }
+
+  for(var j=0;j<arr.length;j++){
+    if(charMap[arr[j]] && charMap[arr[j]] % 2 === 0){
+      result = arr[j];
+      break;
+    }
+  }
+
+  return result;
 };
