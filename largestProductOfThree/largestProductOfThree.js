@@ -8,6 +8,30 @@
  */
 
 
-var largestProductOfThree = function(array) {
+var largestProductOfThree = function (array) {
+   var largestProduct = 0;
 
+   for(var j=0;j<array.length;j++){
+      if(array[j] < largestProduct){
+         largestProduct = array[j];
+      }
+   }
+
+   var recurse = function (currProd, subArray, count) {
+      if (count === 3) {
+         if (currProd > largestProduct) {
+            largestProduct = currProd;
+         }
+
+         return;
+      }
+
+      for (var i = 0; i < subArray.length; i++) {
+         recurse(currProd * subArray[i], subArray.slice(0, i).concat(subArray.slice(i + 1)), count + 1);
+      }
+   };
+
+   recurse(1, array, 0);
+
+   return largestProduct;
 };
