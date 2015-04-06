@@ -24,7 +24,16 @@
  */
 
 var bind = function() {
-
+   var args = Array.prototype.slice.call(arguments);
+   var func = args[0];
+   var context = args[1];
+   var params = args.slice(2);
+   
+   return function(){
+      var innerArgs = Array.prototype.slice.call(arguments);
+      
+      return func.apply(context, params.concat(innerArgs));
+   }
 };
 
 /*
@@ -53,5 +62,14 @@ var bind = function() {
  */
 
 Function.prototype.bind = function() {
-
+   var args = Array.prototype.slice.call(arguments);
+   var func = this;
+   var context = args[0];
+   var params = args.slice(1);
+   
+   return function(){
+      var innerArgs = Array.prototype.slice.call(arguments);
+      
+      return func.apply(context, params.concat(innerArgs));
+   }
 };
