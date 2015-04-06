@@ -37,19 +37,43 @@
 
 // This function is to help you test, and should not be incorporated in your solution.
 // It will transform an array of numbers into an array of valid objects.
-var testingTransform = function(array) {
-  var transform = [];
+var testingTransform = function (array) {
+   var transform = [];
 
-  for(var i = 0; i < array.length; i++) {
-    transform.push({
-      value: array[i],
-      i: i
-    });
-  }
+   for (var i = 0; i < array.length; i++) {
+      transform.push({
+         value: array[i],
+         i: i
+      });
+   }
 
-  return transform;
+   return transform;
 };
 
-var insertionSort = function(array, index, tempPointer) {
+var insertionSort = function (array) {
+   var recurse = function (currIndex) {
+      if(currIndex === array.length){
+         return;
+      }
 
+      var swapOccurred = false;
+      for(var i=currIndex;i<array.length;i++){
+         if(array[i-1] > array[i]){
+            swapOccurred = true;
+            var temp = array[i];
+            array[i] = array[i-1];
+            array[i-1] = temp;
+         }
+      }
+
+      if(swapOccurred){
+         recurse(currIndex);
+      } else {
+         recurse(currIndex + 1);
+      }
+   };
+
+   recurse(1);
+
+   return array;
 };
