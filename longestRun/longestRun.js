@@ -12,5 +12,25 @@
  */
 
 var longestRun = function(string) {
+   var start = 0;
+   var end = 0;
+   var currStart = 0;
+   var currEnd = 0;
+   var longest = 1;
 
+   for(var i=0;i<string.length;i++){
+      if(string[currStart] !== string[currEnd]){
+         if(currEnd - currStart > longest){
+            start = currStart;
+            end = currEnd - 1;
+            longest = currEnd - currStart;
+         }
+
+         currStart = currEnd;
+      }
+
+      currEnd++;
+   }
+
+   return [start, end];
 };
