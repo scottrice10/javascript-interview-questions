@@ -1,6 +1,6 @@
 describe("hashTableResizing", function() {
   it("should create a hash table", function() {
-    var hashTable = makeHashTable();
+    var hashTable = hashtableResizing();
     hashTable.insert("firstName", "Alan");
     hashTable.insert("lastName", "Stevens");
 
@@ -15,7 +15,7 @@ describe("hashTableResizing", function() {
   });
 
   it("should resize when greater than 3 / 4 and less than 1 / 4 capacity", function() {
-    var hashTable = makeHashTable();
+    var hashTable = hashtableResizing();
     hashTable.insert("firstName", "Alan");
     hashTable.insert("lastName", "Stevens");
     hashTable.insert("dog", "Fido");

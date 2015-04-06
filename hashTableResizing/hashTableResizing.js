@@ -7,7 +7,7 @@
  * Resize by half whenever utilization drops below 1/4.
  */
 
-var makeHashTable = function() {
+var hashtableResizing = function() {
 
 };
 
