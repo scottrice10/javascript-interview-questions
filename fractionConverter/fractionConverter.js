@@ -13,5 +13,35 @@
  */
 
 var toFraction = function(number) {
-
+    var numerator = "";
+    var denominator = "";
+    var isNegative = false;
+    var result = "";
+    
+    if(number < 0){
+        isNegative = true;
+    }
+    
+    var recurse = function(currNum, currDenom){
+        if(currNum / currDenom === number){
+          numerator = currNum;
+          denominator = currDenom;
+          return;
+        }
+        
+        if(currNum / currDenom > number){
+          recurse(currNum, currDenom + 1);
+        } else {
+          recurse(currNum + 1, currDenom);
+        }
+    }
+    
+    recurse(1,1);
+    
+    result = numerator + "/" + denominator;
+    if(isNegative){
+        result = "-" + result;
+    }
+    
+    return result;
 };
