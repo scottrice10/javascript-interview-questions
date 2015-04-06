@@ -31,10 +31,31 @@
  * Constraint 3: Do not mutate the original nodes in any way
  */
 
-var Node = function(value) {
+var Node = function (value) {
+   var obj = {};
+   obj.value = value || null;
+   obj.next = null;
+
+   return obj;
 };
 
-var hasCycle = function(linkedList) {
-  var slow = linkedList;
+var hasCycle = function (linkedList) {
+   var slow = linkedList;
+   var fast = linkedList;
+   var isSlow = false;
 
+   while(fast.next){
+      if(fast.next.value === slow.value){
+         return true;
+      }
+
+      fast = fast.next;
+      if(isSlow){
+         slow = slow.next;
+      }
+
+      isSlow = !isSlow;
+   }
+
+   return false;
 };
