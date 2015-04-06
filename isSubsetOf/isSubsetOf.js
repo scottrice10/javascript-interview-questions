@@ -23,5 +23,18 @@
  */
 
 Array.prototype.isSubsetOf = function(array) {
+   var hashMap = {};
+   var smallArray = this;
 
+   for(var i=0;i<array.length;i++){
+      hashMap[array[i]] = true;
+   }
+
+   for(var j=0;j<smallArray.length;j++){
+      if(!hashMap[smallArray[j]]){
+         return false;
+      }
+   }
+
+   return true;
 };
