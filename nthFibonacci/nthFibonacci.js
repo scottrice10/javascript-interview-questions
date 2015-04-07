@@ -20,8 +20,18 @@
  *
  */
 
-var nthFibonacci = function(n) {
+var nthFibonacci = function(n, resultMap, count) {
+   resultMap = resultMap || {};
+   resultMap[0] = 0;
+   resultMap[1] = 1;
+   count = count || 2;
 
+   if(resultMap[n]){
+      return resultMap[n];
+   }
+
+   resultMap[count] = resultMap[count - 2] + resultMap[count - 1];
+   return nthFibonacci(n, resultMap, count + 1);
 };
 
 
