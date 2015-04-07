@@ -18,5 +18,28 @@
  */
 
 var powerSet = function(str){
+   var result = [""];
+   var charSet = {};
+   var charArray = [];
 
+   for(var j=0;j<str.length;j++){
+      charSet[str[j]] = true;
+   }
+   charArray = Object.keys(charSet);
+
+   var recurse = function(tempString, index){
+      if(index === str.length){
+         return;
+      }
+
+      for(var i=index;i<charArray.length;i++){
+         var currRes = tempString + charArray[i];
+         result.push(currRes);
+         recurse(currRes, i + 1);
+      }
+   };
+
+   recurse("", 0);
+
+   return result;
 };
