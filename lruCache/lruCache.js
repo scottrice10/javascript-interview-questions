@@ -72,7 +72,7 @@ LRUCache.prototype.set = function(key, val) {
       var node = this._ordering.head;
       while(node.next) {
          if(node.val.key === key) {
-            this.moveToFront(node);
+            this.moveToEnd(node);
          }
 
          node = node.next;

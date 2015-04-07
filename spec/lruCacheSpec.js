@@ -19,7 +19,7 @@ describe("lruCache", function() {
 
     // item3 is also removed, because it was retrieved before item2 was
     // last retrieved.
-    expect(cache.set("item6"));
+    expect(cache.set("item6", 6));
     expect(cache.get("item3")).to.be.equal(null);
   });
 });
