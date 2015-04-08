@@ -11,6 +11,41 @@
  * reason for the O(n^2) worst case runtime.
  **/
 
-function quickSort(array){
+function quickSort(array, left, right) {
+   left = left || 0;
+   right = right || array.length - 1;
+   var index = partition(array, left, right);
 
+   if(left < index - 1) {
+      quickSort(array, left, index - 1);
+   }
+
+   if(index < right) {
+      quickSort(array, index, right);
+   }
+
+   return array;
+}
+
+function partition(array, left, right) {
+   var pivot = array[Math.floor((left + right) / 2)];
+
+   while(left <= right) {
+      while(array[left] < pivot) {
+         left++;
+      }
+
+      while(pivot < array[right]) {
+         right--;
+      }
+
+      var temp = array[left];
+      array[left] = array[right];
+      array[right] = temp;
+
+      right--;
+      left++;
+   }
+
+   return left;
 }
