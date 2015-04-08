@@ -38,4 +38,56 @@
 
 
 var Range = function(start, end, step) {
+   this.start = start;
+   this.end = end || start;
+   this.step = step || 1;
+};
+
+Range.prototype.size = function() {
+   var counter = 0;
+   this.each(function(){
+      counter++
+   });
+
+   return counter;
+};
+
+Range.prototype.each = function(callback) {
+   if(this.step < 0) {
+      for(var i = this.start; i >= this.end; i += this.step) {
+         callback(i);
+      }
+   } else if(!this.step && this.start - this.end > 0) {
+      for(var i = this.start; i >= this.end; i--) {
+         callback(i);
+      }
+   } else {
+      for(var i = this.start; i <= this.end; i += this.step) {
+         callback(i);
+      }
+   }
+};
+
+Range.prototype.includes = function(index) {
+   if(this.step < 0) {
+      for(var i = this.start; i >= this.end; i += this.step) {
+         if(i === index) {
+            return true;
+         }
+      }
+   } else if(!this.step && this.start - this.end > 0) {
+      for(var i = this.start; i <= this.end; i--) {
+         if(i === index) {
+            return true;
+         }
+      }
+   } else {
+      for(var i = this.start; i <= this.end; i += this.step) {
+         if(i === index) {
+            return true;
+         }
+      }
+   }
+
+   return false;
 };
