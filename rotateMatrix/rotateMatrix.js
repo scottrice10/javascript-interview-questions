@@ -44,5 +44,30 @@
  */
 
 var rotateMatrix = function(matrix, rotation) {
+   var result = [];
+   rotation = rotation || 1;
 
+   if(rotation > 0) {
+      for(var i = 0; i < matrix.length; i++) {
+         for(var j = 0; j < matrix[i].length; j++) {
+            if(!result[j]) {
+               result[j] = [];
+            }
+
+            result[j][matrix.length - 1 - i] = matrix[i][j];
+         }
+      }
+   } else {
+      for(var i = 0; i < matrix.length; i++) {
+         for(var j = 0; j < matrix[i].length; j++) {
+            if(!result[matrix.length - 1 - j]) {
+               result[matrix.length - 1 - j] = [];
+            }
+
+            result[matrix.length - 1 - j][i] = matrix[i][j];
+         }
+      }
+   }
+
+   return result;
 };
