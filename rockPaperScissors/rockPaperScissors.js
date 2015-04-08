@@ -17,6 +17,23 @@
  *
  */
 
-var rockPaperScissors = function (rounds) {
+var rockPaperScissors = function(rounds) {
+   var result = [];
+   rounds = rounds || 3;
 
+   var throwsArray = ["rock", "paper", "scissors"];
+
+   var recurse = function(currRound, turn) {
+      if(turn === rounds) {
+         return result.push(currRound);
+      }
+
+      for(var i = 0; i < 3; i++) {
+         recurse(currRound.concat(throwsArray[i]), turn + 1);
+      }
+   };
+
+   recurse([], 0);
+
+   return result;
 };
