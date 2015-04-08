@@ -32,21 +32,29 @@
  */
 
 var shuffleDeck = function(deck) {
+   for(var i = deck.length - 1; i <=0; i--) {
+      var rand = Math.random() * i;
 
+      var temp = deck[i];
+      deck[i] = deck[rand];
+      deck[rand] = temp;
+   }
+
+   return deck;
 };
 
 // Ordered deck generator provided for your testing convenience
 // (You may alter this function, but an unaltered copy will be used for tests.)
 var orderedDeck = function() {
-  var suits = ['♥', '♣', '♠', '♦'];
-  var values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
-  var deck = [];
+   var suits = ['♥', '♣', '♠', '♦'];
+   var values = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+   var deck = [];
 
-  suits.forEach(function(suit) {
-    values.forEach(function(value) {
-      deck.push(value + suit);
-    });
-  });
+   suits.forEach(function(suit) {
+      values.forEach(function(value) {
+         deck.push(value + suit);
+      });
+   });
 
-  return deck;
+   return deck;
 };
