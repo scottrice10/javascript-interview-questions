@@ -44,7 +44,7 @@ var phoneDigitsToLetters = {
 var telephoneWords = function(digitString) {
    var result = [];
 
-   var recurse = function(currResult,currIndex) {
+   var recurse = function(currResult, currIndex) {
       if(digitString.length === currIndex) {
          result.push(currResult);
          return;
@@ -56,7 +56,7 @@ var telephoneWords = function(digitString) {
       }
    };
 
-   recurse("",0);
+   recurse("", 0);
 
    return result;
 };
