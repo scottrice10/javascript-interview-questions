@@ -11,5 +11,22 @@
 
 // Solved in O(n) time and O(1) space
 var sumArray = function(array) {
+   var greatestSum = 0;
+   var recurse = function(currSum, index) {
+      if(currSum > greatestSum) {
+         greatestSum = currSum;
+      }
 
+      if(index === array.length) {
+         return;
+      }
+
+      recurse(currSum + array[index], index + 1);
+   };
+
+   for(var i = 0; i < array.length; i++) {
+      recurse(0, i);
+   }
+
+   return greatestSum;
 };

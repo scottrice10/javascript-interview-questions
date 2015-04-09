@@ -8,7 +8,6 @@ describe("sumArray", function() {
   });
 
   it("should sum array 3", function() {
-    var index = binarySearch([4], 5);
     expect(sumArray([1, 2, 3, -4, 5])).to.be.equal(7);
   });
 
