@@ -28,19 +28,35 @@
  */
 
 var phoneDigitsToLetters = {
-  0: '0',
-  1: '1',
-  2: 'ABC',
-  3: 'DEF',
-  4: 'GHI',
-  5: 'JKL',
-  6: 'MNO',
-  7: 'PQRS',
-  8: 'TUV',
-  9: 'WXYZ'
+   0: '0',
+   1: '1',
+   2: 'ABC',
+   3: 'DEF',
+   4: 'GHI',
+   5: 'JKL',
+   6: 'MNO',
+   7: 'PQRS',
+   8: 'TUV',
+   9: 'WXYZ'
 };
 
 
 var telephoneWords = function(digitString) {
+   var result = [];
 
+   var recurse = function(currResult,currIndex) {
+      if(digitString.length === currIndex) {
+         result.push(currResult);
+         return;
+      }
+
+      var letters = phoneDigitsToLetters[digitString[currIndex]];
+      for(var j = 0; j < letters.length; j++) {
+         recurse(currResult + letters[j], currIndex + 1);
+      }
+   };
+
+   recurse("",0);
+
+   return result;
 };
