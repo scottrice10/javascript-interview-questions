@@ -11,5 +11,38 @@ var treeDiameter = function(value, left, right) {
 };
 
 function findDiameter(root) {
+  var diameter = 0;
 
+  var recurse = function(node){
+    var leftMax = 0;
+    var rightMax = 0;
+    var left = node.left;
+    var right = node.right;
+
+    while(left){
+      leftMax++;
+      left = left.left;
+    }
+
+    while(right){
+      rightMax++;
+      right = right.right;
+    }
+
+    if(leftMax + rightMax > diameter){
+      diameter = leftMax + rightMax;
+    }
+
+    if(node.left){
+      recurse(node.left);
+    }
+
+    if(node.right){
+      recurse(node.right);
+    }
+  };
+
+  recurse(root);
+
+  return diameter;
 }
