@@ -39,6 +39,40 @@
  */
 
 var treeMap = function(value) {
+  this.value = value;
+  this.children = [];
+};
+
+treeMap.prototype.addChild = function(value){
+   this.children.push(new treeMap(value));
+};
+
+treeMap.prototype.map = function(callback){
+   var newTree = new treeMap(callback(this.value));
+
+   var recurse = function(oldNode, newNode){
+      for(var i=0;i<oldNode.children.length;i++){
+         newNode.addChild(new treeMap(callback(oldNode.children[i].value)));
+         recurse(oldNode.children[i], newNode.children[i]);
+      }
+   };
+
+   recurse(this, newTree);
+
+   return newTree;
+};
+
+treeMap.prototype.mapInPlace = function(callback){
+   this.value = callback(this.value);
+
+   var recurse = function(node){
+      for(var i=0;i<node.children.length;i++){
+         node.children[i].value = callback(node.children[i].value);
+         recurse(node.children[i]);
+      }
+   };
+
+   recurse(this);
 };
 
 /**
@@ -50,8 +84,8 @@ var treeMap = function(value) {
  * (wrap values in Tree nodes if they're not already)
  */
 treeMap.prototype.addChild = function(child) {
-  if(!child || !(child instanceof Tree)) {
-    child = new Tree(child);
+  if(!child || !(child instanceof treeMap)) {
+    child = new treeMap(child);
   }
 
   if(!this.isDescendant(child)) {
