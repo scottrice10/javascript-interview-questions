@@ -33,6 +33,29 @@
  */
 
 var CountLeaves = function(value){
+  this.value = value || null;
+  this.children = [];
+};
+
+CountLeaves.prototype.addChild = function(value){
+  this.children.push(new CountLeaves(value));
+};
+
+CountLeaves.prototype.countLeaves = function(){
+  var count = 0;
+  var recurse = function(node){
+    if(node.children.length === 0){
+      return count++;
+    }
+
+    for(var i=0;i<node.children.length;i++){
+      recurse(node.children[i]);
+    }
+  };
+
+  recurse(this);
+
+  return count;
 };
 
 /**
@@ -44,8 +67,8 @@ var CountLeaves = function(value){
   * (wrap values in Tree nodes if they're not already)
   */
 CountLeaves.prototype.addChild = function(child){
-  if (!child || !(child instanceof Tree)){
-    child = new Tree(child);
+  if (!child || !(child instanceof CountLeaves)){
+    child = new CountLeaves(child);
   }
 
   if(!this.isDescendant(child)){
