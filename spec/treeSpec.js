@@ -1,5 +1,5 @@
 describe("tree", function() {
-  var tree = treeMaker();
+  var tree = new treeMaker(3);
   tree.addChild(1);
   tree.addChild(2);
 
