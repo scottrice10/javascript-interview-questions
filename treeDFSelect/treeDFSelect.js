@@ -30,10 +30,10 @@
  * Basic tree that stores a value.
  */
 
-var Tree = DFSelect = function(value){
+var DFSelect = function(value){
 };
 
-Tree.prototype.DFSelect = function(filter) {
+DFSelect.prototype.DFSelect = function(filter) {
 
 };
 
@@ -45,9 +45,9 @@ Tree.prototype.DFSelect = function(filter) {
   * add an immediate child
   * (wrap values in Tree nodes if they're not already)
   */
-Tree.prototype.addChild = function(child){
-  if (!child || !(child instanceof Tree)){
-    child = new Tree(child);
+DFSelect.prototype.addChild = function(child){
+  if (!child || !(child instanceof DFSelect)){
+    child = new DFSelect(child);
   }
 
   if(!this.isDescendant(child)){
@@ -63,7 +63,7 @@ Tree.prototype.addChild = function(child){
   * check to see if the provided tree is already a child of this
   * tree __or any of its sub trees__
   */
-Tree.prototype.isDescendant = function(child){
+DFSelect.prototype.isDescendant = function(child){
   if(this.children.indexOf(child) !== -1){
     // `child` is an immediate child of this tree
     return true;
@@ -81,7 +81,7 @@ Tree.prototype.isDescendant = function(child){
 /**
   * remove an immediate child
   */
-Tree.prototype.removeChild = function(child){
+DFSelect.prototype.removeChild = function(child){
   var index = this.children.indexOf(child);
   if(index !== -1){
     // remove the child

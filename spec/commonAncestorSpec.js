@@ -13,7 +13,7 @@ describe("commonAncestor", function() {
   var cousin = new commonAncestor('cousin');
   aunt.addChild(cousin);
 
-  var notRelated = new Tree();
+  var notRelated = new commonAncestor();
 
 
   it("should find common ancestor path", function() {

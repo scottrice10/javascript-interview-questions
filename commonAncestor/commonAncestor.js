@@ -12,7 +12,7 @@
  * grandma.getAncestorPath(me); // => [grandma, mom, me]
  */
 
-var Tree = commonAncestor = function(value) {
+var commonAncestor = function(value) {
   this.children = [];
   this.value = value || null;
 };
@@ -20,7 +20,7 @@ var Tree = commonAncestor = function(value) {
 /**
  * add an immediate child
  */
-Tree.prototype.addChild = function(child) {
+commonAncestor.prototype.addChild = function(child) {
   if(!this.isDescendant(child)) {
     this.children.push(child);
   } else {
@@ -38,7 +38,7 @@ Tree.prototype.addChild = function(child) {
  *  3.) between my grandma and my grandma -> my grandma
  *  4.) between me and a potato -> null
  */
-Tree.prototype.getClosestCommonAncestor = function(root1, root2) {
+commonAncestor.prototype.getClosestCommonAncestor = function(root1, root2) {
   var result = null;
   var root1Path = this.getAncestorPath(root1);
   var root2Path = this.getAncestorPath(root2);
@@ -64,7 +64,7 @@ Tree.prototype.getClosestCommonAncestor = function(root1, root2) {
  * 3.) me.getAncestorPath(me) -> [me]
  * 4.) grandma.getAncestorPath(H R Giger) -> null
  */
-Tree.prototype.getAncestorPath = function(targetNode) {
+commonAncestor.prototype.getAncestorPath = function(targetNode) {
   var result = null;
 
   var recurse = function(currNode, currPath) {
@@ -86,7 +86,7 @@ Tree.prototype.getAncestorPath = function(targetNode) {
  * check to see if the provided tree is already a child of this
  * tree __or any of its sub trees__
  */
-Tree.prototype.isDescendant = function(child) {
+commonAncestor.prototype.isDescendant = function(child) {
   if(this.children.indexOf(child) !== -1) {
     // `child` is an immediate child of this tree
     return true;
@@ -104,7 +104,7 @@ Tree.prototype.isDescendant = function(child) {
 /**
  * remove an immediate child
  */
-Tree.prototype.removeChild = function(child) {
+commonAncestor.prototype.removeChild = function(child) {
   var index = this.children.indexOf(child);
   if(index !== -1) {
     // remove the child
